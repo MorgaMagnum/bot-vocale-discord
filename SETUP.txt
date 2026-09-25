@@ -1,0 +1,84 @@
+════════════════════════════════════════════════════════
+  SETUP BOT DISCORD - DEVOTION SKILL (Throne and Liberty)
+════════════════════════════════════════════════════════
+
+PREREQUISITI
+────────────
+1. Python 3.11+ installato  →  https://python.org/downloads
+2. ffmpeg installato e nel PATH
+     Scarica da: https://ffmpeg.org/download.html
+     Su Windows: estrai e aggiungi la cartella /bin al PATH di sistema
+     Verifica con:  ffmpeg -version  (nel terminale)
+
+PASSO 1 — Installa le dipendenze Python
+────────────────────────────────────────
+  Apri un terminale nella cartella "Bot Vocale" ed esegui:
+
+    pip install -r requirements.txt
+
+
+PASSO 2 — Crea il Bot Discord
+──────────────────────────────
+  1. Vai su https://discord.com/developers/applications
+  2. "New Application" → dai un nome
+  3. Sezione "Bot" → "Add Bot"
+  4. Copia il TOKEN e incollalo in bot.py:
+       DISCORD_TOKEN = "il_tuo_token_qui"
+  5. In "Privileged Gateway Intents" non serve nulla (intents.default() basta)
+  6. Sezione "OAuth2" → "URL Generator":
+       Scope:       bot
+       Permission:  Connect, Speak
+  7. Copia l'URL generato, aprilo nel browser, aggiungi il bot al tuo server
+
+
+PASSO 3 — Trova l'ID del canale vocale
+────────────────────────────────────────
+  1. In Discord: Impostazioni → Avanzate → Abilita "Modalità sviluppatore"
+  2. Tasto destro sul canale vocale → "Copia ID canale"
+  3. Incolla in bot.py:
+       VOICE_CHANNEL_ID = 1234567890123456789
+
+
+PASSO 4 — Calibra le coordinate schermo
+─────────────────────────────────────────
+  1. Apri Throne and Liberty con la hotbar visibile
+  2. In un altro terminale esegui:
+       python calibrate.py
+  3. Segui le istruzioni a schermo
+  4. Copia il blocco SKILL_REGION stampato in console dentro bot.py
+
+
+PASSO 5 — Avvia il bot
+───────────────────────
+    python bot.py
+
+  Il bot si connette al canale vocale e inizia a monitorare lo schermo.
+  Per terminarlo: Ctrl+C nel terminale.
+
+
+RISOLUZIONE PROBLEMI
+─────────────────────
+- "ffmpeg not found":  installa ffmpeg e aggiungilo al PATH
+- Score template bassi:  riesegui calibrate.py e seleziona meglio la regione,
+                         oppure abbassa MATCH_THRESHOLD in bot.py (es. 0.55)
+- Audio non riprodotto:  verifica che il bot sia connesso al canale vocale
+                         (controlla i log nel terminale)
+- Bot non trova il canale: verifica VOICE_CHANNEL_ID e che il bot sia nel server
+
+
+STRUTTURA FILE
+───────────────
+Bot Vocale/
+├── bot.py                    ← script principale
+├── calibrate.py              ← helper per trovare coordinate schermo
+├── requirements.txt          ← dipendenze Python
+├── SETUP.txt                 ← questo file
+├── immagini/
+│   ├── devotion skill on dettaglio.png   ← template stato ON
+│   ├── devotion off in 5 dettaglio.png   ← template stato OFF IN 5
+│   └── devotion cd dettaglio.png         ← template stato COOLDOWN
+└── tracce audio/
+    ├── devotion on.wav
+    ├── devotion off in 5.wav
+    └── devotion off.wav
+════════════════════════════════════════════════════════

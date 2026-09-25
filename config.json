@@ -1,0 +1,20 @@
+{
+  "mic_device": "Microfono (Arctis Nova Pro)",
+  "output_device": "CABLE Input (VB-Audio Virtual Cable)",
+  "detection_mode": "keyboard",
+  "keyboard_key": "t",
+  "reset_key": "j",
+  "beep_enabled": true,
+  "beep_duration": 5,
+  "skill_region_left": 1265,
+  "skill_region_top": 970,
+  "skill_region_width": 106,
+  "skill_region_height": 97,
+  "on_threshold": 0.7,
+  "confirm_frames": 2,
+  "devotion_duration": 20.0,
+  "warning_before": 5.0,
+  "cooldown_min": 18.0,
+  "match_threshold": 0.65,
+  "check_interval": 0.15
+}
