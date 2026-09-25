@@ -1,8 +1,8 @@
-# Devotion Bot — Throne and Liberty
+# Bot Vocale — Avvisi audio per timer skill
 
-Bot vocale per **Throne and Liberty** che avvisa il gruppo su Discord quando la skill **Devotion** viene attivata, quando sta per scadere e quando termina.
+Bot vocale che avvisa il gruppo in chat vocale (Discord o simili) quando una skill a tempo viene attivata, quando sta per scadere e quando termina.
 
-Il bot passa il tuo microfono su un cavo audio virtuale (VB-Audio **CABLE**) e ci mescola sopra gli avvisi audio. Su Discord selezioni `CABLE Output` come microfono: i compagni sentono la tua voce e gli avvisi, senza usare un bot Discord separato.
+Il bot passa il tuo microfono su un cavo audio virtuale (VB-Audio **CABLE**) e ci mescola sopra gli avvisi audio. In Discord selezioni `CABLE Output` come microfono: i compagni sentono la tua voce e gli avvisi, senza usare un bot separato.
 
 ---
 
@@ -18,22 +18,22 @@ Microfono ──► monitor.py ──► CABLE Input ──► (Discord: microfo
 
 1. **Passthrough del microfono**: `monitor.py` inoltra in continuo il microfono verso `CABLE Input`.
 2. **Rilevamento dell'attivazione**: due modalità, da scegliere in `config.json` → `detection_mode`:
-   - `keyboard` (consigliata): alla pressione del tasto configurato (`keyboard_key`, default `t`) il bot considera la skill attivata. La risposta è immediata e non serve catturare lo schermo.
+   - `keyboard` (consigliata): alla pressione del tasto configurato (`keyboard_key`) il bot considera la skill attivata. La risposta è immediata e non serve catturare lo schermo.
    - `visual`: il bot cattura una piccola regione dello schermo attorno all'icona della skill e riconosce lo stato *attiva* con due metodi:
-     - **colore HSV** (metodo principale): cerca il bordo rosa/magenta che compare solo mentre il buff è attivo. Il bordo deve essere visibile su almeno 2 lati, così le animazioni di transizione non generano falsi positivi;
+     - **colore HSV** (metodo principale): cerca il bordo colorato che compare solo mentre l'effetto è attivo. Il bordo deve essere visibile su almeno 2 lati, così le animazioni di transizione non generano falsi positivi;
      - **template matching** (metodo di riserva): confronta la regione con i template in `immagini/on/`.
 
-     Per evitare falsi allarmi il bot riconosce anche lo stato *inutilizzabile* (per esempio in acqua) tramite `immagini/inutilizzabile/`. Quando la skill torna utilizzabile, ignora i segnali per qualche secondo.
+     Per evitare falsi allarmi il bot riconosce anche lo stato *inutilizzabile* della skill tramite `immagini/inutilizzabile/`. Quando la skill torna utilizzabile, ignora i segnali per qualche secondo.
 3. **Timer**: dopo l'attivazione, gli avvisi seguono solo il timer:
 
    | Momento | Avviso |
    |---|---|
-   | T + 0 s | `devotion on.wav` |
-   | T + (durata − 5) s | `devotion off in 5.wav` |
-   | T + durata | `devotion off.wav` |
+   | T + 0 s | skill attivata |
+   | T + (durata − preavviso) s | skill in scadenza |
+   | T + durata | skill terminata |
    | T + durata + cooldown | torna in ascolto |
 
-   Nelle cuffie senti anche un beep di conferma (ON 880 Hz, avviso 660 Hz, OFF 440 Hz), che non passa su CABLE.
+   Nelle cuffie senti anche un beep di conferma (attivazione 880 Hz, preavviso 660 Hz, fine 440 Hz), che non passa su CABLE.
 
 ---
 
@@ -95,11 +95,11 @@ Infine, **in Discord** imposta il dispositivo di input su `CABLE Output (VB-Audi
 |---|---|
 | `calibra_da_calibrazione.py` | **Consigliato**: ricava regione e template dagli screenshot in `immagini di calibrazione/` |
 | `calibra_auto.py` | Calibrazione automatica da screenshot |
-| `ricalibra_template.py` | Cattura guidata dei template dal gioco (3 passi) |
+| `ricalibra_template.py` | Cattura guidata dei template (3 passi) |
 | `cattura_rapida.py` | Cattura rapida dei template con i tasti 1/2/3 (4 = inutilizzabile) |
 | `estrai_inutilizzabile.py` | Estrae il template dello stato "skill inutilizzabile" |
 | `calibrate.py` | Selezione manuale della regione dello schermo |
-| `diagnosi.py` | Vista live di ciò che vede il bot (pixel rosa, lati, punteggi). Tasti: `Q` esci, `+`/`−` soglia, `S` salva |
+| `diagnosi.py` | Vista live di ciò che vede il bot (pixel colorati, lati, punteggi). Tasti: `Q` esci, `+`/`−` soglia, `S` salva |
 
 ---
 
@@ -113,7 +113,7 @@ config.json                Configurazione
 immagini/                  Template per il riconoscimento
   on/                      Template della skill ATTIVA (i file _bak_* vengono ignorati)
   inutilizzabile/          Template della skill non utilizzabile
-immagini di calibrazione/  Screenshot del gioco usati per la calibrazione
+immagini di calibrazione/  Screenshot usati per la calibrazione
 tracce audio/              Avvisi audio (.wav)
 ```
 
