@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 Bot Discord - Monitoraggio Skill Devotion (Throne and Liberty)
 Riproduce audio nel canale vocale Discord in base allo stato della skill.

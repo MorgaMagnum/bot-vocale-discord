@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 cattura_rapida.py — Preview live + salvataggio template + spostamento regione
 

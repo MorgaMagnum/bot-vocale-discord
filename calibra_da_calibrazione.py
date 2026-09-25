@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 calibra_da_calibrazione.py — Estrae coordinate e template della skill Devotion
                               direttamente dalle immagini di calibrazione salvate.

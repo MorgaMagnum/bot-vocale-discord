@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 ricalibra_template.py — Ricrea i template dal tuo schermo attuale
 

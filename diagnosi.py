@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 diagnosi.py — Visualizzazione live del riconoscimento skill Devotion
 

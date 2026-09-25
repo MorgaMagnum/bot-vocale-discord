@@ -1,3 +1,4 @@
+# Autore: PaoloBrosio
 # Devotion Skill Monitor — dipendenze Python
 # Installa con:  pip install -r requirements.txt
 

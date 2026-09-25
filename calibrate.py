@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 calibrate.py — Trova le coordinate dello schermo per SKILL_REGION in bot.py
 

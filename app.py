@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 app.py — Interfaccia grafica Devotion Bot (Throne and Liberty)
 
@@ -83,7 +84,7 @@ def save_config(cfg: dict) -> None:
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Devotion Bot — Throne and Liberty")
+        self.title("Devotion Bot — Throne and Liberty  ·  by PaoloBrosio")
         self.configure(bg=BG)
         self.resizable(True, True)
         self.minsize(820, 560)

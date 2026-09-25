@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 estrai_inutilizzabile.py — Estrae il template "skill inutilizzabile" dall'immagine
                            di calibrazione e lo salva in immagini/inutilizzabile/

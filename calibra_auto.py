@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 calibra_auto.py — Trova automaticamente la skill Devotion nello screenshot
 

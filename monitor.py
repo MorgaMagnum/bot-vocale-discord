@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Autore: PaoloBrosio — © 2026 PaoloBrosio
 """
 monitor.py — Devotion Bot con rilevamento attivazione + timer
 
@@ -539,6 +540,7 @@ def _check_reload():
 
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 async def main():
+    log.info("Devotion Bot — by PaoloBrosio")
     preload_audio()
 
     # Copia in variabili locali (evita UnboundLocalError da assegnazione condizionale)
